@@ -1,0 +1,162 @@
+A stream is an abstraction that either produces or consumes information.
+Stream is linked to physical device by java i/o System.
+Byte Stream : Reading or Writing binary data
+Character Stream : Unicode
+
+inputstream : byte-input
+Output-Stream : byte-output
+Reader : char-input
+writer : char-output
+
+
+bytestream class:
+Two abstract Classes:
+InputStream and OutputStream
+read() and write()
+
+character class:
+Reader and Writer
+handle unicode character stream
+read() and write()
+
+
+BufferedInputStream,BufferedOutputStream
+bytearrayinputstream,o/p
+Datainputstream,DataOutputStream
+FileInputStream,FileOutputStream
+PrintStream o/p streams that contains print and println
+
+
+System-in refers to standard input stream keyboard by default
+-out refers to standard o/p stream by default console
+-err error ,console by default
+
+System.in represents the standard input stream (i.e., the keyboard).
+
+Unfortunately, System.in has no methods for reading characters, strings, or numbers. It has a read method to read a single byte at a time.[Java uses Unicode in which each character is two bytes]
+
+To be able to read characters, strings, or numbers, System.in must be wrapped in other objects.
+
+To turn System.in into a Reader object (i.e., an object that is capable of reading one character at a time), 
+wrap System.in in an InputStreamReader object:	
+	InputStreamReader   reader =new  InputStreamReader(System.in) ;
+
+To turn the object referenced by reader into an object with the ability to read entire lines at a time,
+       wrap the object in a BufferedReader object:
+	BufferedReader  stdin  = new  BufferedReader(reader) ;
+
+The steps of turning System.in into a BufferedReader object can be combined into a single statement:
+	BufferedReader  stdin  =  new BufferedReader( new InputStreamReader(System.in)) ;
+
+Note: Both the BufferedReader class and the InputStreamReader class are defined in the java.io package.
+Reading Characters
+To read a character from a BufferedReader, use read( ). 
+int read( ) throws IOException 
+Each time that read( ) is called, it reads a character from the input stream and returns it as an integer value. 
+It returns –1 when the end of the stream is encountered. 
+
+
+
+//Use a BufferedReader to read characters from the console. 
+    import java.io.*;  
+    class BRRead {  
+ public static void main(String args[]) throws IOException   
+      {     
+char c;    
+ BufferedReader br = new BufferedReader(new InputStreamReader(System.in));  System.out.println("Enter characters, 'q' to quit."); 
+    // read characters   
+  do {     
+       c = (char) br.read();    
+       System.out.println(c);    
+         } while(c != 'q');   
+       } 
+}
+
+
+PrintStream class defines print(), println().
+Because PrintStream is an output stream derived from OutputStream, it also implementsthe low-level method
+    	void write(int byteval);
+This method writes the byte specified by byteval. 
+only the low-order eight bits are written. 
+class WriteDemo 
+{
+  public static void main(String args[]) 
+{
+    System.out.write(65); //65- 1000001
+    System.out.write(321);//321- 101000001
+    System.out.write('\n');   }
+}
+Output
+D:\java2016\program\IO>java WriteDemo
+AA
+
+
+
+// flushing is  automatic.
+ import java.io.*;  
+public class PrintWriterDemo 
+{   public static void main(Stringargs[]) 
+    {     PrintWriter pw = new PrintWriter(System.out,true);            pw.println("hello");     
+           int i = -7;  
+          pw.println(i);   
+         double d = 4.5e-7;      
+         pw.println(d);  
+      } 
+}
+
+Output
+D:\java2016\program\IO>java PrintWriterDemo
+hello
+-7
+4.5E-7
+
+
+
+// flushing is not automatic.
+import java.io.*;  
+public class PrintWriterDemo 
+{   public static void main(String args[]) 
+    {     PrintWriter pw = new     PrintWriter(System.out,false);           pw.println("hello");     
+           int i = -7;  
+          pw.println(i); 
+          pw.flush();  
+         double d = 4.5e-7;      
+         pw.println(d);  
+      } 
+}
+output
+D:\java2016\program\IO>java PrintWriterDemo
+hello
+-7
+
+
+
+
+
+import java.io.*;  
+class CopyFile {
+   public static void main(String args[]) throws IOException   
+{     int i;    
+ FileInputStream fin = null; FileOutputStream fout = null; 
+    if(args.length != 2)
+ {      System.out.println("Usage: CopyFile from to");      
+        return;
+}       
+ try {       // Attempt to open the files.   
+  fin = new FileInputStream(args[0]);  
+   fout = new FileOutputStream(args[1]);       
+ do {       
+  i = fin.read();      
+   if(i != -1)
+ fout.write(i);     
+  } while(i != -1);     
+ } catch(IOException e) {       System.out.println("I/O Error: " + e);     }
+
+
+
+
+
+
+
+
+

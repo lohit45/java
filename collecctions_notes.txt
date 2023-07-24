@@ -1,0 +1,76 @@
+collections in java
+COllections are frameworks that provides architecture to store and manipulate the group of objects
+WITH the help of COllections we can Perform operations like SEArching,Sorting,Insertion,Manipulation,Deletion
+JaVa provides Interfaces like Set,list,queue,deque
+classes like Arraylist,Vector,linkedlist,hashset,treeset,Priority Queue
+interface:
+public boolean add(E e)
+Used to insert
+
+
+BEFORE COLLECTIONS
+to group java objects together only we had vector,array,hashtree
+all three had no common interface
+and vector is mostly final
+Difficult to write algorithms
+
+
+java.util.Collection
+java.util.Map
+
+
+Consistent API
+Reduces programming effort
+Increases speed
+
+
+interface Collection<E>
+E is type of objects that the collections will hold
+Collections extends iterable interface
+
+
+//methods
+
+
+boolean add(E obj)
+add obj to collecction
+return true if objection was added
+return false if obj is already a member of collection
+
+
+
+boolean addAll(Collection <? extends E >c)
+
+void clear()
+Removes all elements from invoking collection
+
+
+boolean contains(Objects obj)
+boolean equals(Object obj)
+boolean isEmpty()
+Object[] toArray()
+
+
+
+LIST interface
+call get() -> index of object
+call set() -> set a value to element 
+indexOf()
+subList()
+add(int,E)
+
+
+COLLECTION CLASSES
+
+ArrayList :
+uses dynamic array for storing elements
+it inherits abstract List class and implements List interface
+ 
+ can contain duplicate elements:
+insertion order
+random access
+manipulation is slow
+
+
+
+

@@ -1,0 +1,30 @@
+enhance parallel processing,increase response to user,prioritize your work depending on priority,idle time of cpu
+SYnchronized methods
+Synchronized block
+interthread Communication
+When two or more threads need access to a shared resources,they need some way to ensure that resource will be used by only one thread at a time.
+This process can be done by Synchronization
+
+key to synchronisation is monitor.Monitor is a object that is used as a mutually exclusive lock.
+communication:
+
+wait() ->tells the calling thread to give up the monitor and go to sleep until some time notify()-> will wake up a thread that called wiat()
+suspend,reusme()
+
+Limitation of multithreading
+data inconsistency,sharable data
+register2 = counter
+register2 = register2-1
+counter = register2
+Racce condition
+
+
+setName
+getName
+public void run() start() stop()
+
+
+
+
+
+
